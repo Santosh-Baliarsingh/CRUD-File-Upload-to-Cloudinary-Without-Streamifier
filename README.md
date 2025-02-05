@@ -55,9 +55,17 @@ This is a simple CRUD application where you can create, read, update, and delete
 
 - `validatePost` - Validates the request body for creating and updating posts
 
-## Temporary Files
+## File Upload and Temporary Files
 
-The `express-fileupload` middleware creates a `tmp` folder for temporary files during the upload process.
+The `express-fileupload` middleware is used to handle file uploads in this application. When a file is uploaded, `express-fileupload` temporarily stores the file in memory or on disk. By default, it creates a `tmp` folder in the root directory of the project to store these temporary files. This folder is used to hold the uploaded files before they are processed and uploaded to Cloudinary.
+
+### How it works:
+1. A file is uploaded via a POST request.
+2. `express-fileupload` stores the file in the `tmp` folder when `{ useTempFiles: true }` is set.
+3. The file is then processed (e.g., uploaded to Cloudinary).
+4. After processing, the temporary file can be deleted.
+
+**Note:** The `tmp` folder will accumulate files over time as new images are uploaded. It is important to periodically clean up this folder to prevent it from consuming too much disk space. You may need to manually delete the `tmp` folder if it is no longer needed.
 
 ## License
 

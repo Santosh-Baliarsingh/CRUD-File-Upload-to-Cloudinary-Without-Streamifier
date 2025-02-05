@@ -51,6 +51,24 @@ This is a simple CRUD application where you can create, read, update, and delete
 - `PUT /posts/update/:id` - Update an existing post
 - `DELETE /posts/delete/:id` - Delete a post
 
+## Headers
+
+- `Content-Type` : `multipart/form-data`
+
+## Request Body
+
+- **Create Post**
+  - `title`: String (required)
+  - `content`: String (required)
+  - `imageUri`: File (required)
+  - `thumbnails`: Array of Files (required, at least 1 and max 4)
+
+- **Update Post**
+  - `title`: String (required)
+  - `content`: String (required)
+  - `imageUri`: File (required)
+  - `thumbnails`: Array of Files (required, at least 1 and max 4)
+
 ## Middleware
 
 - `validatePost` - Validates the request body for creating and updating posts
